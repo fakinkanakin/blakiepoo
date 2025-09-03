@@ -20,3 +20,17 @@ body {
 .content.full {
   margin-left: 0;
 }
+
+.dashboard-box {
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  margin: 50px auto;
+  width: 70%;
+  color: white;
+}
+
+.dashboard-box h1 {
+  font-size: 2em;
+}
