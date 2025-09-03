@@ -3,18 +3,41 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="tester.css">
+  <title>Dashboard Test</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="content" id="content">
-<div id="dashboard" class="page">
-<div class="dashboard-box">
-  <div>blakiepoo</div>
-  <div>
-    <p>
-      is the best
-    </p>
-</div>
+  <!-- Sidebar -->
+  <div class="sidebar" id="sidebar">
+    <h2>Menu</h2>
+    <ul>
+      <li>Dashboard</li>
+      <li>Profile</li>
+      <li>Settings</li>
+    </ul>
+  </div>
+
+  <!-- Content -->
+  <div class="content" id="content">
+    <div class="dashboard-box">
+      <h1>blakiepoo</h1>
+      <p>is the best</p>
+    </div>
+  </div>
+
+  <!-- Toggle Button -->
+  <button class="toggle-btn" id="toggleBtn">☰</button>
+
+  <script>
+    const toggleBtn = document.getElementById('toggleBtn');
+    const sidebar = document.getElementById('sidebar');
+    const content = document.getElementById('content');
+
+    toggleBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('hidden');
+      content.classList.toggle('full');
+    });
+  </script>
 </body>
 </html>
