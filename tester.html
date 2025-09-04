@@ -148,6 +148,50 @@ body {
 .menu-btn:hover {
   opacity: 0.3;
 }
+
+	@media (max-width: 768px) {
+  body {
+    flex-direction: column; /* stack sidebar and content if needed */
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;       /* full height menu */
+    width: 220px;       /* slightly smaller for mobile */
+    transform: translateX(-100%); /* hidden by default */
+    z-index: 999;       /* sit above content */
+  }
+
+  .sidebar.hidden {
+    transform: translateX(-100%);
+  }
+
+  .sidebar.show {
+    transform: translateX(0); /* visible when toggled */
+  }
+
+  .content {
+    margin-left: 0 !important; /* remove fixed margin */
+    padding: 15px;
+    width: 100%;
+  }
+
+  .dashboard-box {
+    width: 90%;   /* shrink box to fit small screens */
+    margin: 20px auto;
+    padding: 20px;
+  }
+
+  .toggle-btn {
+    top: 15px;
+    left: 15px;
+    padding: 8px 12px;
+    font-size: 18px;
+    z-index: 1001;
+  }
+}
 </style>
 
   <script>
