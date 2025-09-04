@@ -3,7 +3,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: Garamond, serif;
-  background: linear-gradient(-90deg, #FDFFAB);
+  background: linear-gradient(-90deg, #FDFFAB, #ffffff);
   display: flex;
   height: 100vh;
 }
