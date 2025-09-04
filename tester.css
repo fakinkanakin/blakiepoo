@@ -1,8 +1,9 @@
+<style>    
 body {
   margin: 0;
   padding: 0;
-  font-family: Arial, sans-serif;
-  background: linear-gradient(-45deg, #ff0000, #ffc800);
+  font-family: Garamond, serif;
+   background: linear-gradient(-90deg, #FDFFAB);
   display: flex;
   height: 100vh;
 }
@@ -10,8 +11,8 @@ body {
 /* Sidebar */
 .sidebar {
   width: 250px;
-  background: rgba(0, 0, 0, 0.8);
-  color: white;
+  background: rgba(203, 203, 203, 1);
+  color: black;
   padding: 20px;
   box-sizing: border-box;
   transition: transform 0.3s ease-in-out;
@@ -52,13 +53,13 @@ body {
 
 /* Dashboard box */
 .dashboard-box {
-  background-color: rgba(253, 203, 0, 0.7);
+  background-color: rgba(253, 203, 0, 0.57);
   padding: 30px;
   border-radius: 15px;
   text-align: center;
   margin: 50px auto;
   width: 70%;
-  color: white;
+  color: black;
 }
 
 .dashboard-box h1 {
@@ -83,13 +84,45 @@ body {
 .toggle-btn:hover {
   background: #ff9900;
 }
-.sidebar-btn{
+
+.menu-btn{
   width: 100%;
   padding: 15px;
-  border: 1px solid #ffffff30;
   border-radius: 8px;
-  color: white;
+  color: black;
   font-size: 16px;
   cursor: pointer;
   margin: 10px 0;
 } 
+
+.menu-btn {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 8px;
+  color: black;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 10px 0;
+  transition: background-color 0.3s ease;
+}
+
+/* Individual colors */
+.about-btn {
+  background-color: rgba(253, 203, 0, 0.7);
+}
+.commissions-btn {
+  background-color: rgba(253, 203, 0, 0.7);
+}
+.ready-btn {
+  background-color: rgba(253, 203, 0, 0.7);
+}
+.pdf-btn {
+  background-color: rgba(253, 203, 0, 0.7);
+}
+
+/* Hover effect (optional) */
+.menu-btn:hover {
+  opacity: 0.3;
+}
+</style>
