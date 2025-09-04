@@ -4,20 +4,172 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard Test</title>
-  <link rel="stylesheet" href="tester.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Garamond, serif;
+      background: linear-gradient(-90deg, #FDFFAB, #ffffff);
+      display: flex;
+      height: 100vh;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 250px;
+      background: rgba(203, 203, 203, 1);
+      color: black;
+      padding: 20px;
+      box-sizing: border-box;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .sidebar.hidden {
+      transform: translateX(-100%);
+    }
+
+    .sidebar h2 {
+      margin-top: 50px;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .sidebar ul li {
+      margin: 15px 0;
+      cursor: pointer;
+    }
+
+    /* Content area */
+    .content {
+      flex: 1;
+      padding: 20px;
+      color: white;
+      overflow-y: auto;
+      transition: margin-left 0.3s ease-in-out;
+      margin-left: 250px;
+      width: 100%;
+    }
+
+    .content.full {
+      margin-left: 0;
+    }
+
+    /* Dashboard box */
+    .dashboard-box {
+      background-color: rgba(253, 203, 0, 0.57);
+      padding: 30px;
+      border-radius: 15px;
+      text-align: center;
+      margin: 50px auto;
+      width: 70%;
+      color: black;
+    }
+
+    .dashboard-box h1 {
+      font-size: 2em;
+    }
+
+    /* Toggle button */
+    .toggle-btn {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background: #ffc800;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 15px;
+      cursor: pointer;
+      font-weight: bold;
+      z-index: 1001;
+      transition: background 0.2s;
+      font-size: 20px;
+    }
+
+    .toggle-btn:hover {
+      background: #ff9900;
+    }
+
+    .menu-btn {
+      width: 100%;
+      padding: 15px;
+      border: none;
+      border-radius: 8px;
+      color: black;
+      font-size: 16px;
+      cursor: pointer;
+      margin: 10px 0;
+      transition: background-color 0.3s ease;
+    }
+
+    /* Individual button colors */
+    .about-btn,
+    .commissions-btn,
+    .ready-btn,
+    .pdf-btn {
+      background-color: rgba(253, 203, 0, 0.7);
+    }
+
+    .menu-btn:hover {
+      background-color: rgba(253, 203, 0, 1);
+    }
+
+    /* ===================== */
+    /* Mobile Styles */
+    @media (max-width: 768px) {
+      body {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 220px;
+        transform: translateX(-100%);
+        z-index: 999;
+      }
+
+      .sidebar.show {
+        transform: translateX(0);
+      }
+
+      .content {
+        margin-left: 0 !important;
+        padding: 15px;
+        width: 100%;
+      }
+
+      .dashboard-box {
+        width: 90%;
+        margin: 20px auto;
+        padding: 20px;
+      }
+
+      .toggle-btn {
+        top: 15px;
+        left: 15px;
+        padding: 8px 12px;
+        font-size: 22px;
+      }
+    }
+  </style>
 </head>
 <body>
 
-<!-- Sidebar -->
-<div class="sidebar" id="sidebar">
-  <h2>Menu</h2>
-	<ul>
- 	 <li><button class="menu-btn about-btn" id="aboutBtn">About Me</button></li>
- 	 <li><button class="menu-btn commissions-btn" id="commissionsBtn">Commissions</button></li>
-	 <li><button class="menu-btn ready-btn" id="readyBtn">Ready To Ship</button></li>
- 	 <li><button class="menu-btn pdf-btn" id="pdfBtn">PDF Patterns</button></li>
-	</ul>
-</div>
+  <!-- Sidebar -->
+  <div class="sidebar hidden" id="sidebar">
+    <h2>Menu</h2>
+    <ul>
+      <li><button class="menu-btn about-btn" id="aboutBtn">About Me</button></li>
+      <li><button class="menu-btn commissions-btn" id="commissionsBtn">Commissions</button></li>
+      <li><button class="menu-btn ready-btn" id="readyBtn">Ready To Ship</button></li>
+      <li><button class="menu-btn pdf-btn" id="pdfBtn">PDF Patterns</button></li>
+    </ul>
+  </div>
 
   <!-- Content -->
   <div class="content" id="content">
@@ -31,227 +183,62 @@
   <!-- Toggle Button -->
   <button class="toggle-btn" id="toggleBtn">☰</button>
 
-<style>    
-body {
-  margin: 0;
-  padding: 0;
-  font-family: Garamond, serif;
-  background: linear-gradient(-90deg, #FDFFAB, #ffffff);
-  display: flex;
-  height: 100vh;
-}
-
-/* Sidebar */
-.sidebar {
-  width: 250px;
-  background: rgba(203, 203, 203, 1);
-  color: black;
-  padding: 20px;
-  box-sizing: border-box;
-  transition: transform 0.3s ease-in-out;
-}
-
-.sidebar.hidden {
-  transform: translateX(-100%);
-}
-
-.sidebar h2 {
-  margin-top: 50px;
-}
-
-.sidebar ul {
-  list-style: none;
-  padding: 0;
-}
-
-.sidebar ul li {
-  margin: 15px 0;
-  cursor: pointer;
-}
-
-/* Content area */
-.content {
-  flex: 1;
-  padding: 20px;
-  color: white;
-  overflow-y: auto;
-  transition: margin-left 0.3s ease-in-out;
-  margin-left: 250px;
-  width: 100%;
-}
-
-.content.full {
-  margin-left: 0;
-}
-
-/* Dashboard box */
-.dashboard-box {
-  background-color: rgba(253, 203, 0, 0.57);
-  padding: 30px;
-  border-radius: 15px;
-  text-align: center;
-  margin: 50px auto;
-  width: 70%;
-  color: black;
-}
-
-.dashboard-box h1 {
-  font-size: 2em;
-}
-
-/* Toggle button */
-.toggle-btn {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  background: #ffc800;
-  border: none;
-  border-radius: 8px;
-  padding: 10px 15px;
-  cursor: pointer;
-  font-weight: bold;
-  z-index: 1000;
-  transition: background 0.2s;
-}
-
-.toggle-btn:hover {
-  background: #ff9900;
-}
-
-.menu-btn {
-  width: 100%;
-  padding: 15px;
-  border: none;
-  border-radius: 8px;
-  color: black;
-  font-size: 16px;
-  cursor: pointer;
-  margin: 10px 0;
-  transition: background-color 0.3s ease;
-}
-
-/* Individual colors */
-.about-btn {
-  background-color: rgba(253, 203, 0, 0.7);
-}
-.commissions-btn {
-  background-color: rgba(253, 203, 0, 0.7);
-}
-.ready-btn {
-  background-color: rgba(253, 203, 0, 0.7);
-}
-.pdf-btn {
-  background-color: rgba(253, 203, 0, 0.7);
-}
-
-/* Hover effect (optional) */
-.menu-btn:hover {
-  opacity: 0.3;
-}
-
-	@media (max-width: 768px) {
-  body {
-    flex-direction: column; /* stack sidebar and content if needed */
-  }
-
-  .sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100%;       /* full height menu */
-    width: 220px;       /* slightly smaller for mobile */
-    transform: translateX(-100%); /* hidden by default */
-    z-index: 999;       /* sit above content */
-  }
-
-  .sidebar.hidden {
-    transform: translateX(-100%);
-  }
-
-  .sidebar.show {
-    transform: translateX(0); /* visible when toggled */
-  }
-
-  .content {
-    margin-left: 0 !important; /* remove fixed margin */
-    padding: 15px;
-    width: 100%;
-  }
-
-  .dashboard-box {
-    width: 90%;   /* shrink box to fit small screens */
-    margin: 20px auto;
-    padding: 20px;
-  }
-
-  .toggle-btn {
-    top: 15px;
-    left: 15px;
-    padding: 8px 12px;
-    font-size: 18px;
-    z-index: 1001;
-  }
-}
-</style>
-
   <script>
     const toggleBtn = document.getElementById('toggleBtn');
     const sidebar = document.getElementById('sidebar');
     const content = document.getElementById('content');
 
+    // Handle sidebar toggle (desktop & mobile)
     toggleBtn.addEventListener('click', () => {
-      sidebar.classList.toggle('hidden');
-      content.classList.toggle('full');
+      if (window.innerWidth <= 768) {
+        sidebar.classList.toggle('show'); // overlay on mobile
+      } else {
+        sidebar.classList.toggle('hidden'); // push content on desktop
+        content.classList.toggle('full');
+      }
     });
-    
-      const commissionsBtn = document.getElementById("commissionsBtn");
 
-  commissionsBtn.addEventListener("click", () => {
-    content.innerHTML = `
-      <div class="dashboard-box">
-        <h1>Commissions</h1>
-        <p>Here’s where you explain your commissions details, pricing, etc.</p>
-      </div>
-    `;
-  });
-  
-  const aboutBtn = document.getElementById("aboutBtn");
+    // Page buttons
+    const commissionsBtn = document.getElementById("commissionsBtn");
+    commissionsBtn.addEventListener("click", () => {
+      content.innerHTML = `
+        <div class="dashboard-box">
+          <h1>Commissions</h1>
+          <p>Here’s where you explain your commissions details, pricing, etc.</p>
+        </div>
+      `;
+    });
 
-aboutBtn.addEventListener("click", () => {
-  content.innerHTML = `
-    <div class="dashboard-box">
-      <h1>knoturaverageshop</h1>
-      <p>Welcome to my official website!</p>
-      <p>Most of my work is advertised on my social media accounts</p>
-    </div>
-  `;
-});
+    const aboutBtn = document.getElementById("aboutBtn");
+    aboutBtn.addEventListener("click", () => {
+      content.innerHTML = `
+        <div class="dashboard-box">
+          <h1>knoturaverageshop</h1>
+          <p>Welcome to my official website!</p>
+          <p>Most of my work is advertised on my social media accounts</p>
+        </div>
+      `;
+    });
 
-      const readyBtn = document.getElementById("readyBtn");
+    const readyBtn = document.getElementById("readyBtn");
+    readyBtn.addEventListener("click", () => {
+      content.innerHTML = `
+        <div class="dashboard-box">
+          <h1>Ready To Ship</h1>
+          <p>Here’s where you can see all inventory and what products are available to ship out</p>
+        </div>
+      `;
+    });
 
-  readyBtn.addEventListener("click", () => {
-    content.innerHTML = `
-      <div class="dashboard-box">
-        <h1>Ready To Ship</h1>
-        <p>Here’s where you can see all inventory and what products are available to ship out</p>
-      </div>
-    `;
-  });
-  
-        const pdfBtn = document.getElementById("pdfBtn");
-
-  pdfBtn.addEventListener("click", () => {
-    content.innerHTML = `
-      <div class="dashboard-box">
-        <h1>PDF Patterns</h1>
-        <p>Here you can find all custom made patterns</p>
-      </div>
-    `;
-  });
-
-	  toggleBtn.addEventListener('click', () => {
-  sidebar.classList.toggle('show');
-});
+    const pdfBtn = document.getElementById("pdfBtn");
+    pdfBtn.addEventListener("click", () => {
+      content.innerHTML = `
+        <div class="dashboard-box">
+          <h1>PDF Patterns</h1>
+          <p>Here you can find all custom made patterns</p>
+        </div>
+      `;
+    });
   </script>
 </body>
 </html>
