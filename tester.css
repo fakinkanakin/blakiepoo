@@ -3,7 +3,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: Garamond, serif;
-  background: linear-gradient(-90deg, #FDFFAB);
+  background: rgba(253, 255, 171, 1);
   display: flex;
   height: 100vh;
 }
@@ -84,16 +84,6 @@ body {
 .toggle-btn:hover {
   background: #ff9900;
 }
-
-.menu-btn{
-  width: 100%;
-  padding: 15px;
-  border-radius: 8px;
-  color: black;
-  font-size: 16px;
-  cursor: pointer;
-  margin: 10px 0;
-} 
 
 .menu-btn {
   width: 100%;
