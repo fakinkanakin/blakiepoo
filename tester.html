@@ -8,35 +8,28 @@
 </head>
 <body>
 
-  <!-- Sidebar -->
-  <div class="sidebar" id="sidebar">
-    <h2>Menu</h2>
-    <ul class="sidebar-btn">
-      <li>Dashboard</li>
-      <li>Profile</li>
-      <li>Settings</li>
-    </ul>
-  </div>
+<!-- Sidebar -->
+<div class="sidebar" id="sidebar">
+  <h2>Menu</h2>
+	<ul>
+ 	 <li><button class="menu-btn about-btn" id="aboutBtn">About Me</button></li>
+ 	 <li><button class="menu-btn commissions-btn" id="commissionsBtn">Commissions</button></li>
+	 <li><button class="menu-btn ready-btn" id="readyBtn">Ready To Ship</button></li>
+ 	 <li><button class="menu-btn pdf-btn" id="pdfBtn">PDF Patterns</button></li>
+	</ul>
+</div>
 
   <!-- Content -->
   <div class="content" id="content">
     <div class="dashboard-box">
-      <h1>blakiepoo</h1>
-      <p>is the best</p>
+      <h1>knoturaverageshop</h1>
+      <p>Welcome to my official website!</p>
+      <p>Most of my work is advertised on my social media accounts.</p>
     </div>
   </div>
 
   <!-- Toggle Button -->
   <button class="toggle-btn" id="toggleBtn">☰</button>
-
-  <script>
-    const toggleBtn = document.getElementById('toggleBtn');
-    const sidebar = document.getElementById('sidebar');
-    const content = document.getElementById('content');
-
-    toggleBtn.addEventListener('click', () => {
-      sidebar.classList.toggle('hidden');
-      content.classList.toggle('full');
     });
   </script>
 </body>
