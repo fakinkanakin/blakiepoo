@@ -24,15 +24,133 @@
     <div class="dashboard-box">
       <h1>knoturaverageshop</h1>
       <p>Welcome to my official website!</p>
-      <p>Most of my work is advertised on my social media accounts.</p>
+      <p>Most of my work is advertised on my social media accounts</p>
     </div>
   </div>
 
   <!-- Toggle Button -->
   <button class="toggle-btn" id="toggleBtn">☰</button>
-    });
 
-	  <script>
+<style>    
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Garamond, serif;
+  background: linear-gradient(-90deg, #FDFFAB, #ffffff);
+  display: flex;
+  height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 250px;
+  background: rgba(203, 203, 203, 1);
+  color: black;
+  padding: 20px;
+  box-sizing: border-box;
+  transition: transform 0.3s ease-in-out;
+}
+
+.sidebar.hidden {
+  transform: translateX(-100%);
+}
+
+.sidebar h2 {
+  margin-top: 50px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  margin: 15px 0;
+  cursor: pointer;
+}
+
+/* Content area */
+.content {
+  flex: 1;
+  padding: 20px;
+  color: white;
+  overflow-y: auto;
+  transition: margin-left 0.3s ease-in-out;
+  margin-left: 250px;
+  width: 100%;
+}
+
+.content.full {
+  margin-left: 0;
+}
+
+/* Dashboard box */
+.dashboard-box {
+  background-color: rgba(253, 203, 0, 0.57);
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  margin: 50px auto;
+  width: 70%;
+  color: black;
+}
+
+.dashboard-box h1 {
+  font-size: 2em;
+}
+
+/* Toggle button */
+.toggle-btn {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: #ffc800;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-weight: bold;
+  z-index: 1000;
+  transition: background 0.2s;
+}
+
+.toggle-btn:hover {
+  background: #ff9900;
+}
+
+.menu-btn {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 8px;
+  color: black;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 10px 0;
+  transition: background-color 0.3s ease;
+}
+
+/* Individual colors */
+.about-btn {
+  background-color: rgba(253, 203, 0, 0.7);
+}
+.commissions-btn {
+  background-color: rgba(253, 203, 0, 0.7);
+}
+.ready-btn {
+  background-color: rgba(253, 203, 0, 0.7);
+}
+.pdf-btn {
+  background-color: rgba(253, 203, 0, 0.7);
+}
+
+/* Hover effect (optional) */
+.menu-btn:hover {
+  opacity: 0.3;
+}
+</style>
+
+  <script>
     const toggleBtn = document.getElementById('toggleBtn');
     const sidebar = document.getElementById('sidebar');
     const content = document.getElementById('content');
@@ -60,7 +178,7 @@ aboutBtn.addEventListener("click", () => {
     <div class="dashboard-box">
       <h1>knoturaverageshop</h1>
       <p>Welcome to my official website!</p>
-	  <p>Most of my work is advertised on my social media accounts.</p>
+      <p>Most of my work is advertised on my social media accounts</p>
     </div>
   `;
 });
