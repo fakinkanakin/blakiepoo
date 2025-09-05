@@ -1,4 +1,4 @@
-  <script>
+
     const toggleBtn = document.getElementById('toggleBtn');
     const sidebar = document.getElementById('sidebar');
     const content = document.getElementById('content');
@@ -51,4 +51,3 @@ aboutBtn.addEventListener("click", () => {
       </div>
     `;
   });
-  </script>
