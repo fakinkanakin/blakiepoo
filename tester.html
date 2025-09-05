@@ -42,19 +42,20 @@
       cursor: pointer;
     }
 
-    /* Content area */
+	/* Content area */
     .content {
       flex: 1;
       padding: 20px;
       color: white;
       overflow-y: auto;
-      transition: margin-left 0.3s ease-in-out;
-      margin-left: 250px;
+      transition: margin-left 0.3s ease-in-out, width 0.3s ease-in-out;
+      margin-left: 0;        /* start full width */
       width: 100%;
     }
 
-    .content.full {
-      margin-left: 0;
+    .content.shrink {
+      margin-left: 250px;    /* same width as sidebar */
+      width: calc(100% - 250px);
     }
 
     /* Dashboard box */
@@ -93,7 +94,8 @@
     }
 
     .menu-btn {
-      width: 100%;
+ 	  width: 100%;
+      height: 48px;
       padding: 15px;
       border: none;
       border-radius: 8px;
@@ -101,20 +103,32 @@
       font-size: 16px;
       cursor: pointer;
       margin: 10px 0;
-      transition: background-color 0.3s ease;
+      transition: width 0.2s, height 0.2s;
     }
 
     /* Individual button colors */
-    .about-btn,
-    .commissions-btn,
-    .ready-btn,
-    .pdf-btn {
+    .about-btn {
       background-color: rgba(253, 203, 0, 0.7);
-    }
-
+	}
+	.commissions-btn {
+      background-color: rgba(253, 203, 0, 0.7);
+	}
+	.ready-btn {
+      background-color: rgba(253, 203, 0, 0.7);
+	}
+	.pdf-btn {
+      background-color: rgba(253, 203, 0, 0.7);
+	}
     .menu-btn:hover {
       background-color: rgba(253, 203, 0, 1);
     }
+    
+    /* Hover effect (optional) */
+	.menu-btn:hover {
+ 	  width: 225px;
+	  height: 60px;
+	}
+
 
     /* ===================== */
     /* Mobile Styles */
@@ -184,19 +198,22 @@
   <button class="toggle-btn" id="toggleBtn">☰</button>
 
   <script>
-    const toggleBtn = document.getElementById('toggleBtn');
-    const sidebar = document.getElementById('sidebar');
-    const content = document.getElementById('content');
+  function toggleSidebar() {
+  const sidebar = document.getElementById("sidebar");
+  const content = document.getElementById("content");
 
-    // Handle sidebar toggle (desktop & mobile)
-    toggleBtn.addEventListener('click', () => {
-      if (window.innerWidth <= 768) {
-        sidebar.classList.toggle('show'); // overlay on mobile
-      } else {
-        sidebar.classList.toggle('hidden'); // push content on desktop
-        content.classList.toggle('full');
-      }
-    });
+  if (window.innerWidth <= 768 || window.matchMedia("(orientation: portrait)").matches) {
+    // Mobile → sidebar overlays, content stays full
+    sidebar.classList.toggle("show");
+  } else {
+    // Desktop → sidebar pushes content
+    sidebar.classList.toggle("hidden");
+    content.classList.toggle("shrink");
+  }
+}
+
+// Attach event
+document.getElementById("toggleBtn").addEventListener("click", toggleSidebar);
 
     // Page buttons
     const commissionsBtn = document.getElementById("commissionsBtn");
