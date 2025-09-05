@@ -43,20 +43,20 @@
     }
 
 	/* Content area */
-    .content {
-      flex: 1;
-      padding: 20px;
-      color: white;
-      overflow-y: auto;
-      transition: margin-left 0.3s ease-in-out, width 0.3s ease-in-out;
-      margin-left: 0;        /* start full width */
-      width: 100%;
-    }
-
-    .content.shrink {
-      margin-left: 250px;    /* same width as sidebar */
-      width: calc(100% - 250px);
-    }
+	.content {
+	  flex: 1;
+	  padding: 20px;
+	  color: white;
+	  overflow-y: auto;
+	  transition: margin-left 0.3s ease-in-out, width 0.3s ease-in-out;
+	  margin-left: 0;   /* full width by default */
+	  width: 100%;
+	}
+	
+	.content.shrink {
+	  margin-left: 250px;    
+	  width: calc(100% - 250px);
+	}
 
     /* Dashboard box */
     .dashboard-box {
@@ -169,13 +169,13 @@
   </div>
 
   <!-- Content -->
-  <div class="content shrink" id="content">
-    <div class="dashboard-box">
-      <h1>knoturaverageshop</h1>
-      <p>Welcome to my official website!</p>
-      <p>Most of my work is advertised on my social media accounts</p>
-    </div>
+<div class="content" id="content">
+  <div class="dashboard-box">
+    <h1>knoturaverageshop</h1>
+    <p>Welcome to my official website!</p>
+    <p>Most of my work is advertised on my social media accounts</p>
   </div>
+</div>
 
   <!-- Toggle Button -->
   <button class="toggle-btn" id="toggleBtn">☰</button>
@@ -215,13 +215,18 @@
 
     // Sidebar toggle
     function toggleSidebar() {
-      if (window.innerWidth <= 768 || window.matchMedia("(orientation: portrait)").matches) {
-        sidebar.classList.toggle("show"); // Mobile
-      } else {
-        sidebar.classList.toggle("hidden"); // Desktop
-        content.classList.toggle("shrink");
-      }
+     const sidebar = document.getElementById("sidebar");
+     const content = document.getElementById("content");
+
+     if (window.innerWidth <= 768 || window.matchMedia("(orientation: portrait)").matches) {
+    // 📱 Mobile → overlay sidebar, content stays full width
+     sidebar.classList.toggle("show");
+     } else {
+    // 💻 Desktop → sidebar pushes content
+     sidebar.classList.toggle("hidden");
+     content.classList.toggle("shrink");
     }
+  }
 
     document.getElementById("toggleBtn").addEventListener("click", toggleSidebar);
 
