@@ -104,31 +104,14 @@
       cursor: pointer;
       margin: 10px 0;
       transition: width 0.2s, height 0.2s;
+      background-color: rgba(253, 203, 0, 0.7);
     }
 
-    /* Individual button colors */
-    .about-btn {
-      background-color: rgba(253, 203, 0, 0.7);
-	}
-	.commissions-btn {
-      background-color: rgba(253, 203, 0, 0.7);
-	}
-	.ready-btn {
-      background-color: rgba(253, 203, 0, 0.7);
-	}
-	.pdf-btn {
-      background-color: rgba(253, 203, 0, 0.7);
-	}
     .menu-btn:hover {
       background-color: rgba(253, 203, 0, 1);
+      width: 225px;
+      height: 60px;
     }
-    
-    /* Hover effect (optional) */
-	.menu-btn:hover {
- 	  width: 225px;
-	  height: 60px;
-	}
-
 
     /* ===================== */
     /* Mobile Styles */
@@ -178,15 +161,15 @@
   <div class="sidebar hidden" id="sidebar">
     <h2>Menu</h2>
     <ul>
-      <li><button class="menu-btn about-btn" id="aboutBtn">About Me</button></li>
-      <li><button class="menu-btn commissions-btn" id="commissionsBtn">Commissions</button></li>
-      <li><button class="menu-btn ready-btn" id="readyBtn">Ready To Ship</button></li>
-      <li><button class="menu-btn pdf-btn" id="pdfBtn">PDF Patterns</button></li>
+      <li><button class="menu-btn" data-page="about">About Me</button></li>
+      <li><button class="menu-btn" data-page="commissions">Commissions</button></li>
+      <li><button class="menu-btn" data-page="ready">Ready To Ship</button></li>
+      <li><button class="menu-btn" data-page="pdf">PDF Patterns</button></li>
     </ul>
   </div>
 
   <!-- Content -->
-  <div class="content" id="content">
+  <div class="content shrink" id="content">
     <div class="dashboard-box">
       <h1>knoturaverageshop</h1>
       <p>Welcome to my official website!</p>
@@ -198,63 +181,56 @@
   <button class="toggle-btn" id="toggleBtn">☰</button>
 
   <script>
-  function toggleSidebar() {
-  const sidebar = document.getElementById("sidebar");
-  const content = document.getElementById("content");
+    const sidebar = document.getElementById("sidebar");
+    const content = document.getElementById("content");
 
-  if (window.innerWidth <= 768 || window.matchMedia("(orientation: portrait)").matches) {
-    // Mobile → sidebar overlays, content stays full
-    sidebar.classList.toggle("show");
-  } else {
-    // Desktop → sidebar pushes content
-    sidebar.classList.toggle("hidden");
-    content.classList.toggle("shrink");
-  }
-}
-
-// Attach event
-document.getElementById("toggleBtn").addEventListener("click", toggleSidebar);
-
-    // Page buttons
-    const commissionsBtn = document.getElementById("commissionsBtn");
-    commissionsBtn.addEventListener("click", () => {
-      content.innerHTML = `
-        <div class="dashboard-box">
-          <h1>Commissions</h1>
-          <p>Here’s where you explain your commissions details, pricing, etc.</p>
-        </div>
-      `;
-    });
-
-    const aboutBtn = document.getElementById("aboutBtn");
-    aboutBtn.addEventListener("click", () => {
-      content.innerHTML = `
+    // All pages stored in one object
+    const pages = {
+      about: `
         <div class="dashboard-box">
           <h1>knoturaverageshop</h1>
           <p>Welcome to my official website!</p>
           <p>Most of my work is advertised on my social media accounts</p>
         </div>
-      `;
-    });
-
-    const readyBtn = document.getElementById("readyBtn");
-    readyBtn.addEventListener("click", () => {
-      content.innerHTML = `
+      `,
+      commissions: `
+        <div class="dashboard-box">
+          <h1>Commissions</h1>
+          <p>Here’s where you explain your commissions details, pricing, etc.</p>
+        </div>
+      `,
+      ready: `
         <div class="dashboard-box">
           <h1>Ready To Ship</h1>
           <p>Here’s where you can see all inventory and what products are available to ship out</p>
         </div>
-      `;
-    });
-
-    const pdfBtn = document.getElementById("pdfBtn");
-    pdfBtn.addEventListener("click", () => {
-      content.innerHTML = `
+      `,
+      pdf: `
         <div class="dashboard-box">
           <h1>PDF Patterns</h1>
           <p>Here you can find all custom made patterns</p>
         </div>
-      `;
+      `
+    };
+
+    // Sidebar toggle
+    function toggleSidebar() {
+      if (window.innerWidth <= 768 || window.matchMedia("(orientation: portrait)").matches) {
+        sidebar.classList.toggle("show"); // Mobile
+      } else {
+        sidebar.classList.toggle("hidden"); // Desktop
+        content.classList.toggle("shrink");
+      }
+    }
+
+    document.getElementById("toggleBtn").addEventListener("click", toggleSidebar);
+
+    // Handle all menu buttons
+    document.querySelectorAll(".menu-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const page = btn.getAttribute("data-page");
+        content.innerHTML = pages[page];
+      });
     });
   </script>
 </body>
